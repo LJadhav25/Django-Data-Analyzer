@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Analysis Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 20px;
+            padding: 20px;
+        }
+        .header, .item {
+            border: 1px solid #ddd;
+            padding: 20px;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            grid-column: span 2;
+            text-align: center;
+        }
+        h1, h2 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Data Analysis Dashboard</h1>
+        </div>
+        <div class="item">
+            <h2>First Few Rows</h2>
+            {{ head|safe }}
+        </div>
+        <div class="item">
+            <h2>Summary Statistics</h2>
+            {{ summary|safe }}
+        </div>
+        <div class="item">
+            <h2>Missing Values</h2>
+            {{ missing|safe }}
+            <br><br>
+            <h2>Heatmap</h2>
+            <img src="data:image/png;base64,{{ heatmap }}" alt="Missing Values Heatmap" style="width: 90%;">
+        </div>
+        <div class="item">
+            <h2>Data Handeled</h2>
+            {{ train|safe }}
+            <br><br>
+            {{ relate|safe }}
+            <br><br>
+            <h2>Heatmap</h2>
+            <img src="data:image/png;base64,{{ handeled }}" alt="Handeled Missing Values Heatmap" style="width: 90%;">
+        </div>
+        <div class="item">
+            <h2>Survival By Age Histogram</h2>
+            <img src="data:image/png;base64,{{ histogram_survived }}" alt="Histogram Survived Value" style="width: 90%;">
+        </div>
+        <div class="item">
+            <h2>Survival By Gender Histogram</h2>
+            <img src="data:image/png;base64,{{ histogram_survived_gender }}" alt="Histogram Survived by gender Value" style="width: 90%;">
+        </div>
+    </div>
+</body>
+</html>
